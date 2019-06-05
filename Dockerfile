@@ -7,3 +7,11 @@ RUN rm -r \
     /etc/nginx/conf.d/default.conf
 
 COPY app.conf /etc/nginx/conf.d
+
+COPY docker-entrypoint.sh .
+
+ENV FASTCGI_PASS="localhost:9000"
+
+ENTRYPOINT ["/docker-entrypoint.sh"]
+
+CMD ["nginx", "-g", "daemon off;"]

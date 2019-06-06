@@ -26,6 +26,8 @@ services:
       - ./public:/app/public:ro
     depends_on:
       - php
+    environment:
+      FASTCGI_PASS: php:9000
 ```
 
 ### Kubernetes Deployment
